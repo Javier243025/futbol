@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/miestilo.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.6.3.min.js"
+			  integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+			  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <title>
+      Proyecto Ejemplo
+    </title>
+  </head>
+  <style>
+    h1 {text-align: center;}
+</style>
+  <body>
+    <h1 style="background-color:Red;">Lista de Equipos</h1>
+    <hr>
+    <section>
+        <p><b>Número de equipos: ({{numero_equipos}})</b> </p>
+        <table id="tabla_datos">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Estadio</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for equipo in equipos  %}
+            <tr>
+              <td>{{equipo.nombre}}</td>
+              <td>{{equipo.ciudad}}</td>
+              <td>{{equipo.estadio}}</td>
+            </tr>
+            {% endfor %}
+      
+          </table>
+        </tbody>
+          <script type="text/javascript">
+            $(document).ready( function () {
+                $('#tabla_datos').DataTable();
+              });
+          </script>
+
+
+
+
+    </section>
+    <footer>
+      <p>Machachi-Ecuador</p>
+      <p>{% now "j F Y H:i" %}</p>
+    </footer>
+  </body>
+</html>
